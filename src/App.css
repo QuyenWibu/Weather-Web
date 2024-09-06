@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.App{
+  margin: 20px;
+  height: 100vh;
+  width: 100vw;
+}
+
+.ContainerSearchBar{
+  width: 40px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 200px;
+}
+.CurrentWeather{
+  border: 1px solid black;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 10px;
+}
+.CurrentWeather .row1{
+  display: flex;
+  justify-content: space-between;
+}
+
+.CurrentWeather .Current{
+  
+}
+
+
+
+.mainDisplay{
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+}
+
+.mainDisplay .item1{
+  grid-column: 1/ span 2;
+  grid-row: 2;
+  
+}
+
+.mainDisplay .item3{
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.mainDisplay .item4{
+  grid-column: 3;
+  grid-row: 2;
+  color: black;
+  width: 20px;
+  height: 20px;
+}
+.mainDisplay .item5{
+  grid-column: 4;
+  grid-row: 2;
+  color: black;
+}
+
+.mainDisplay .item6{
+  grid-column: 3;
+  grid-row: 3;
+  color: black;
+
+}
+
+.Forecast{
+  border: 1px solid black;
+  margin-top: 10px;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.card-list{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  margin: 10px;
+}
+.card-list .card-item{
+  padding: 10px;
+  margin: 10px;
+}
+
+.btnDetails{
+  margin-top: 10px;
+}
+
+.search{
+  max-width: max-content;
+}
+
+.Max{
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  width: 30px;
+}
+
+.Min{
+  display: flex;
+  flex-direction: row;
+}
