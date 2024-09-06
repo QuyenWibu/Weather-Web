@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import sunIcon from "../assets/sun.png";  
 import rainIcon from "../assets/rain.png"; 
@@ -8,7 +8,8 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 export default function WeatherDisplay({ weather }) {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const [isCelsius, setIsCelsius] = useState(true);
 
   const getIconWeather = () => {
     if (!weather || !weather.weather) return null;
@@ -27,6 +28,22 @@ export default function WeatherDisplay({ weather }) {
     }
   }
 
+  const celsiusToFahrenheit = (celsius) => {
+    return (celsius * 9/5) + 32;
+  }
+
+  const formatTemperature = (temp) => {
+    if (isCelsius) {
+      return `${temp.toFixed(1)}°C`;
+    } else {
+      return `${celsiusToFahrenheit(temp).toFixed(1)}°F`;
+    }
+  }
+
+  const toggleTemperatureUnit = () => {
+    setIsCelsius(!isCelsius);
+  }
+
   return (
     <div className="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden md:max-w-2xl">
       <div className="md:flex">
@@ -39,18 +56,24 @@ export default function WeatherDisplay({ weather }) {
           {weather ? (
             <div>
               <div className="flex items-center mb-4">
-                <p className="text-5xl font-extrabold text-blue-500">{weather.main.temp}°C</p>
-                <p className="ml-4 text-gray-500">Feels like {weather.main.feels_like}°C</p>
+                <p className="text-5xl font-extrabold text-blue-500">{formatTemperature(weather.main.temp)}</p>
+                <p className="ml-4 text-gray-500">Feels like {formatTemperature(weather.main.feels_like)}</p>
+                <button 
+                  onClick={toggleTemperatureUnit}
+                  className="ml-4 px-2 py-1 bg-gray-300 rounded hover:bg-blue-500"
+                >
+                  {isCelsius ? '°F' : '°C'}
+                </button>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center">
                   <ArrowUpwardIcon className="text-blue-500" />
-                  <p className="ml-2 text-lg">{weather.main.temp_max}°C</p>
+                  <p className="ml-2 text-lg">{formatTemperature(weather.main.temp_max)}</p>
                 </div>
                 <div className="flex items-center">
                   <ArrowDownwardIcon className="text-blue-500" />
-                  <p className="ml-2 text-lg">{weather.main.temp_min}°C</p>
+                  <p className="ml-2 text-lg">{formatTemperature(weather.main.temp_min)}</p>
                 </div>
               </div>
 
