@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import sunIcon from "../assets/sun.png";  
-import rainIcon from "../assets/rain.png"; 
-import cloudIcon from "../assets/cloud.png"; 
+import PropTypes from 'prop-types';
+import sunIcon from "../assets/sun.png";
+import rainIcon from "../assets/rain.png";
+import cloudIcon from "../assets/cloud.png";
 import '../display.css'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 export default function WeatherDisplay({ weather }) {
- 
   const [isCelsius, setIsCelsius] = useState(true);
 
   const getIconWeather = () => {
@@ -103,3 +103,25 @@ export default function WeatherDisplay({ weather }) {
     </div>
   );
 }
+
+WeatherDisplay.propTypes = {
+  weather: PropTypes.shape({
+    weather: PropTypes.arrayOf(
+      PropTypes.shape({
+        main: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      })
+    ),
+    main: PropTypes.shape({
+      temp: PropTypes.number.isRequired,
+      temp_max: PropTypes.number.isRequired,
+      temp_min: PropTypes.number.isRequired,
+      feels_like: PropTypes.number.isRequired,
+      humidity: PropTypes.number.isRequired,
+      pressure: PropTypes.number.isRequired,
+    }).isRequired,
+    wind: PropTypes.shape({
+      speed: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+};

@@ -1,4 +1,4 @@
-// src/hooks/useWeatherSearch.js
+
 import { useState, useEffect } from "react";
 import api from "../api/config";
 

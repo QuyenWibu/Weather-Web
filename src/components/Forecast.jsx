@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import sunIcon from "../assets/sun.png";
 import rainIcon from "../assets/rain.png";
 import cloudIcon from "../assets/cloud.png";
@@ -50,5 +51,21 @@ export default function Forecast({ forecast }) {
   );
 }
 
-
-
+Forecast.propTypes = {
+  forecast: PropTypes.shape({
+    list: PropTypes.arrayOf(
+      PropTypes.shape({
+        dt_txt: PropTypes.string,
+        main: PropTypes.shape({
+          temp: PropTypes.number,
+        }),
+        weather: PropTypes.arrayOf(
+          PropTypes.shape({
+            main: PropTypes.string,
+            description: PropTypes.string,
+          })
+        ),
+      })
+    ),
+  }).isRequired,
+};
