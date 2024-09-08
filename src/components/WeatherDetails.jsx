@@ -8,7 +8,7 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 export default function WeatherDetails({ forecast }) {
   // Kiểm tra không là bug ói ĩa 
   if (!forecast || !forecast.list) {
-    return <p>No weather data available for details.</p>;
+    return <p>Không có dữ liệu hãy kiểm tra mạng đi friend</p>;
   }
 
   // Lọc dữ liệu cho 7 ngày index >0 thì -1

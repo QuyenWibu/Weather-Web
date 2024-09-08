@@ -22,7 +22,7 @@ export default function Forecast({ forecast }) {
   };
 
   if (!forecast || !forecast.list) {
-    return <p className="text-center text-gray-500">No forecast data available</p>;
+    return <p className="text-center text-gray-500">Không có dữ liệu hãy kiểm tra mạng đi friend</p>;
   }
 
   const filteredForecast = forecast.list.filter((item, index, array) => {
