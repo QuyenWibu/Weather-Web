@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import sunIcon from "../assets/sun.png";  
 import rainIcon from "../assets/rain.png"; 
 import cloudIcon from "../assets/cloud.png"; 
@@ -8,7 +7,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 export default function WeatherDisplay({ weather }) {
-  const navigate = useNavigate();
+ 
   const [isCelsius, setIsCelsius] = useState(true);
 
   const getIconWeather = () => {
@@ -92,13 +91,6 @@ export default function WeatherDisplay({ weather }) {
                     <p className="text-sm text-gray-500">Pressure</p>
                   </div>
                 </div>
-
-                <button 
-                  className="mt-6 w-full py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600"
-                  onClick={() => navigate('/details')}
-                >
-                  View Details
-                </button>
               </div>
 
               <p className="mt-4 text-center text-gray-500 italic">{weather.weather[0].description}</p>
